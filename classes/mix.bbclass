@@ -13,13 +13,15 @@ MIX_RELEASE_VERSION ?= "${PV}"
 MIX_ENV = "prod"
 
 mix_do_compile() {
-    MIX_ENV=${MIX_ENV} yes | mix do deps.get, compile
+    mix local.hex --force
+    mix local.rebar --force
+    MIX_ENV=${MIX_ENV} mix do deps.get, compile
 }
 
 mix_do_install() {
     # build release using mix and exrm
     # the exrm dependency must used in the mix file
-    MIX_ENV=${MIX_ENV} yes | mix release
+    MIX_ENV=${MIX_ENV} mix release
 
     # create target directory
     install -d ${elixir_release}
