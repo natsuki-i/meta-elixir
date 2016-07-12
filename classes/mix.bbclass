@@ -36,7 +36,7 @@ mix_do_install() {
     
     # extract build release
     MIX_RELEASE_DIR="${B}/rel/${MIX_RELEASE_NAME}/releases/${MIX_RELEASE_VERSION}"
-    tar -zxf ${MIX_RELEASE_DIR}/${MIX_RELEASE_NAME}.tar.gz -C ${elixir_release}
+    tar -zxf ${MIX_RELEASE_DIR}/${MIX_RELEASE_NAME}.tar.gz -C ${elixir_release} --no-same-owner
 }
 
 EXPORT_FUNCTIONS do_compile do_install
